@@ -1,0 +1,18 @@
+{
+    "name": "pdf-annotation-creator",
+    "version": "1.0.0",
+    "description": "Create annotation notes for PDF files",
+    "main": "main.js",
+    "scripts": {
+        "build": "esbuild main.ts --bundle --outfile=main.js --external:obsidian --format=cjs"
+    },
+    "keywords": [],
+    "author": "Ella Zhao",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "esbuild": "^0.27.2",
+        "obsidian": "latest",
+        "typescript": "^5.0.0"
+    }
+}
