@@ -3,7 +3,7 @@
     "name": "PDF Annotation Creator",
     "version": "1.0.0",
     "minAppVersion": "1.0.0",
-    "description": "Right-click on PDF to create annotation note for Annotator plugin",
+    "description": "Right-click on PDF files to create annotation notes for use with the Annotator plugin.",
     "author": "Ella Zhao",
     "authorUrl": "https://github.com/ellazhao",
     "isDesktopOnly": false
