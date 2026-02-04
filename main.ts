@@ -131,10 +131,6 @@ class PDFAnnotationSettingTab extends PluginSettingTab {
         containerEl.empty();
 
         new Setting(containerEl)
-            .setName('PDF Annotation Creator')
-            .setHeading();
-
-        new Setting(containerEl)
             .setName('Note suffix')
             .setDesc('Suffix added to the PDF filename for the annotation note')
             .addText(text => text
@@ -146,7 +142,7 @@ class PDFAnnotationSettingTab extends PluginSettingTab {
                 }));
 
         new Setting(containerEl)
-            .setName('Auto-open Annotator')
+            .setName('Auto-open annotator')
             .setDesc('Automatically open the annotation view after creating the note')
             .addToggle(toggle => toggle
                 .setValue(this.plugin.settings.openAnnotator)
