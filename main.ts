@@ -27,7 +27,7 @@ export default class PDFAnnotationCreator extends Plugin {
                 if (file instanceof TFile && file.extension === 'pdf') {
                     menu.addItem((item) => {
                         item
-                            .setTitle('📝 Create Annotation Note')
+                            .setTitle('📝 Create annotation note')
                             .setIcon('pencil')
                             .onClick(async () => {
                                 await this.createAnnotationNote(file);
@@ -45,7 +45,7 @@ export default class PDFAnnotationCreator extends Plugin {
                 const file = this.app.workspace.getActiveFile();
                 if (file && file.extension === 'pdf') {
                     if (!checking) {
-                        this.createAnnotationNote(file);
+                        this.createAnnotationNote(file).catch(console.error);
                     }
                     return true;
                 }
@@ -56,7 +56,7 @@ export default class PDFAnnotationCreator extends Plugin {
         // 添加设置页
         this.addSettingTab(new PDFAnnotationSettingTab(this.app, this));
 
-        console.log('PDF Annotation Creator loaded');
+        console.debug('PDF Annotation Creator loaded');
     }
 
     async createAnnotationNote(pdfFile: TFile) {
@@ -106,7 +106,7 @@ export default class PDFAnnotationCreator extends Plugin {
     }
 
     onunload() {
-        console.log('PDF Annotation Creator unloaded');
+        console.debug('PDF Annotation Creator unloaded');
     }
 
     async loadSettings() {
@@ -130,7 +130,9 @@ class PDFAnnotationSettingTab extends PluginSettingTab {
         const { containerEl } = this;
         containerEl.empty();
 
-        containerEl.createEl('h2', { text: 'PDF Annotation Creator Settings' });
+        new Setting(containerEl)
+            .setName('PDF Annotation Creator')
+            .setHeading();
 
         new Setting(containerEl)
             .setName('Note suffix')

@@ -38,7 +38,7 @@ var PDFAnnotationCreator = class extends import_obsidian.Plugin {
       this.app.workspace.on("file-menu", (menu, file) => {
         if (file instanceof import_obsidian.TFile && file.extension === "pdf") {
           menu.addItem((item) => {
-            item.setTitle("\u{1F4DD} Create Annotation Note").setIcon("pencil").onClick(async () => {
+            item.setTitle("\u{1F4DD} Create annotation note").setIcon("pencil").onClick(async () => {
               await this.createAnnotationNote(file);
             });
           });
@@ -52,7 +52,7 @@ var PDFAnnotationCreator = class extends import_obsidian.Plugin {
         const file = this.app.workspace.getActiveFile();
         if (file && file.extension === "pdf") {
           if (!checking) {
-            this.createAnnotationNote(file);
+            this.createAnnotationNote(file).catch(console.error);
           }
           return true;
         }
@@ -60,7 +60,7 @@ var PDFAnnotationCreator = class extends import_obsidian.Plugin {
       }
     });
     this.addSettingTab(new PDFAnnotationSettingTab(this.app, this));
-    console.log("PDF Annotation Creator loaded");
+    console.debug("PDF Annotation Creator loaded");
   }
   async createAnnotationNote(pdfFile) {
     const basename = pdfFile.basename;
@@ -90,7 +90,7 @@ var PDFAnnotationCreator = class extends import_obsidian.Plugin {
     }
   }
   onunload() {
-    console.log("PDF Annotation Creator unloaded");
+    console.debug("PDF Annotation Creator unloaded");
   }
   async loadSettings() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
@@ -107,7 +107,7 @@ var PDFAnnotationSettingTab = class extends import_obsidian.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    containerEl.createEl("h2", { text: "PDF Annotation Creator Settings" });
+    new import_obsidian.Setting(containerEl).setName("PDF Annotation Creator").setHeading();
     new import_obsidian.Setting(containerEl).setName("Note suffix").setDesc("Suffix added to the PDF filename for the annotation note").addText((text) => text.setPlaceholder("_annotation").setValue(this.plugin.settings.suffix).onChange(async (value) => {
       this.plugin.settings.suffix = value;
       await this.plugin.saveSettings();
