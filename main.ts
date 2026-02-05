@@ -27,7 +27,7 @@ export default class PDFAnnotationCreator extends Plugin {
                 if (file instanceof TFile && file.extension === 'pdf') {
                     menu.addItem((item) => {
                         item
-                            .setTitle('📝 Create annotation note')
+                            .setTitle('Create annotation note')
                             .setIcon('pencil')
                             .onClick(async () => {
                                 await this.createAnnotationNote(file);

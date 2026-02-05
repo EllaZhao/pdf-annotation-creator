@@ -34,7 +34,7 @@ A simple Obsidian plugin that adds a right-click menu option to create annotatio
 
 1. Make sure you have a PDF file in your vault
 2. Right-click on the PDF file in the file explorer
-3. Click **"📝 Create Annotation Note"**
+3. Click **"Create Annotation Note"**
 4. The annotation note is created and Annotator opens automatically
 
 ![Demo](demo.gif)

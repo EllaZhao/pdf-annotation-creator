@@ -38,7 +38,7 @@ var PDFAnnotationCreator = class extends import_obsidian.Plugin {
       this.app.workspace.on("file-menu", (menu, file) => {
         if (file instanceof import_obsidian.TFile && file.extension === "pdf") {
           menu.addItem((item) => {
-            item.setTitle("\u{1F4DD} Create annotation note").setIcon("pencil").onClick(async () => {
+            item.setTitle("Create annotation note").setIcon("pencil").onClick(async () => {
               await this.createAnnotationNote(file);
             });
           });
